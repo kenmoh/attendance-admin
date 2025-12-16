@@ -333,8 +333,13 @@ export default function LandingPage() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <Link href="/" className="flex items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                  <Clock className="h-5 w-5 text-primary-foreground" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
+                       <Image
+                src="/easyattendancesm.png"
+                width={500}
+                height={500}
+                alt="EasyAttendance Logo"
+              />
                 </div>
                 <span className="text-xl font-bold text-foreground">EasyAttendance</span>
               </Link>
