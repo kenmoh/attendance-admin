@@ -84,27 +84,6 @@ export default function QRCodesPage() {
     }
   }
 
-// const generateQRData = (employeeId?: string): string => {
-//   const qrData = {
-//     employer_id: employerId,
-//     company_name: companyName,
-//     latitude: latitude ?? 0,
-//     longitude: longitude ?? 0,
-//     timestamp: Date.now(),
-//   }
-
-//   const jsonString = JSON.stringify(qrData)
-  
-//   // ADD THESE LOGS
-//   console.log('=== ADMIN QR GENERATION ===')
-//   console.log('QR Data Object:', qrData)
-//   console.log('QR JSON String:', jsonString)
-//   console.log('QR String Length:', jsonString.length)
-//   console.log('===========================')
-
-//   return jsonString
-// }
-
 
 
 function generateChecksum(data: string): string {
@@ -112,7 +91,7 @@ function generateChecksum(data: string): string {
   for (let i = 0; i < data.length; i++) {
     const char = data.charCodeAt(i);
     hash = (hash << 5) - hash + char;
-    hash = hash & hash; // Convert to 32-bit integer
+    hash = hash & hash; 
   }
   return Math.abs(hash).toString(16).substring(0, 8);
 }
