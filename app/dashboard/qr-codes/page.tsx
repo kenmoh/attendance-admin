@@ -85,16 +85,28 @@ export default function QRCodesPage() {
   }
 
   const generateQRData = (employeeId?: string): string => {
-    const qrData: QRData = {
-      employerId,
-      companyName,
-      latitude,
-      longitude,
-      timestamp: Date.now(),
-    }
-
-    return JSON.stringify(qrData)
+  const qrData = {
+    employer_id: employerId,      
+    company_name: companyName, 
+    latitude,
+    longitude,
+    timestamp: Date.now(),
   }
+
+  return JSON.stringify(qrData)
+}
+
+  // const generateQRData = (employeeId?: string): string => {
+  //   const qrData: QRData = {
+  //     employerId,
+  //     companyName,
+  //     latitude,
+  //     longitude,
+  //     timestamp: Date.now(),
+  //   }
+
+  //   return JSON.stringify(qrData)
+  // }
 
   const downloadQR = (qrData: string, filename: string) => {
     const svg = document.getElementById(filename)
