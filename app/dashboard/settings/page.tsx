@@ -167,9 +167,9 @@ export default function SettingsPage() {
     try {
       const supabase = getSupabaseBrowserClient()
 
-      const { error } = await supabase
-        .from("employer_settings")
-        .update({
+      const { error } = await supabase.from("employer_settings").upsert(
+        {
+          employer_id: employerId,
           resumption_time: settings.resumption_time,
           closing_time: settings.closing_time,
           grace_period_minutes: settings.grace_period_minutes,
@@ -179,8 +179,9 @@ export default function SettingsPage() {
           clock_in_radius_meters: settings.clock_in_radius_meters,
           require_location_verification: settings.require_location_verification,
           qr_code_refresh_interval_hours: settings.qr_code_refresh_interval_hours,
-        })
-        .eq("employer_id", employerId)
+        },
+        { onConflict: "employer_id" },
+      )
 
       if (error) throw error
 
@@ -191,7 +192,7 @@ export default function SettingsPage() {
     }
   }
 
-  const handleSaveProfile = async () => {
+  const handleSaveCompany = async () => {
     try {
       const supabase = getSupabaseBrowserClient()
 
@@ -200,29 +201,7 @@ export default function SettingsPage() {
       } = await supabase.auth.getUser()
       if (!user) return
 
-      await supabase
-        .from("employers")
-        .update({
-          company_name: companyName,
-          latitude: latitude,
-          longitude: longitude,
-        })
-        .eq("id", employerId)
-
-      await supabase.from("user_profiles").update({ full_name: userName }).eq("user_id", user.id)
-
-      setSaved(true)
-      setTimeout(() => setSaved(false), 2000)
-    } catch (error) {
-      console.error("Error saving profile:", error)
-    }
-  }
-
-  const handleSaveEmployerProfile = async () => {
-    try {
-      const supabase = getSupabaseBrowserClient()
-
-      const { error } = await supabase
+      const { error: employerError } = await supabase
         .from("employers")
         .update({
           company_name: companyName,
@@ -238,12 +217,14 @@ export default function SettingsPage() {
         })
         .eq("id", employerId)
 
-      if (error) throw error
+      if (employerError) throw employerError
+
+      await supabase.from("user_profiles").update({ full_name: userName }).eq("user_id", user.id)
 
       setSaved(true)
       setTimeout(() => setSaved(false), 2000)
     } catch (error) {
-      console.error("Error saving employer profile:", error)
+      console.error("Error saving profile:", error)
     }
   }
 
@@ -266,9 +247,8 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="attendance" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 lg:w-[600px]">
+        <TabsList className="grid w-full grid-cols-3 lg:w-[600px]">
           <TabsTrigger value="attendance">Attendance</TabsTrigger>
-          <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="company">Company</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
@@ -514,47 +494,44 @@ export default function SettingsPage() {
           </div>
         </TabsContent>
 
-        {/* Employer Profile Settings */}
-        <TabsContent value="profile" className="space-y-6">
+        {/* Company Settings */}
+        <TabsContent value="company" className="space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                Employer Profile
+                <Building2 className="h-5 w-5" />
+                Company & Profile
               </CardTitle>
-              <CardDescription>Update your company profile information</CardDescription>
+              <CardDescription>Manage your company details and profile</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Basic company info */}
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="profileCompanyName">Company Name *</Label>
+                  <Label htmlFor="companyName">Company Name</Label>
                   <Input
-                    id="profileCompanyName"
+                    id="companyName"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     placeholder="Your Company Name"
-                    required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="profileEmail">Email *</Label>
+                  <Label htmlFor="companyEmail">Company Email</Label>
                   <Input
-                    id="profileEmail"
+                    id="companyEmail"
                     type="email"
                     value={employerEmail}
                     onChange={(e) => setEmployerEmail(e.target.value)}
                     placeholder="company@example.com"
-                    required
                   />
                 </div>
               </div>
 
-              <Separator />
-
               <div className="space-y-2">
-                <Label htmlFor="profilePhone">Phone</Label>
+                <Label htmlFor="companyPhone">Phone</Label>
                 <Input
-                  id="profilePhone"
+                  id="companyPhone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -564,10 +541,11 @@ export default function SettingsPage() {
 
               <Separator />
 
+              {/* Address */}
               <div className="space-y-2">
-                <Label htmlFor="profileAddress">Address</Label>
+                <Label htmlFor="companyAddress">Address</Label>
                 <Input
-                  id="profileAddress"
+                  id="companyAddress"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   placeholder="Street address"
@@ -576,153 +554,32 @@ export default function SettingsPage() {
 
               <div className="grid gap-6 sm:grid-cols-3">
                 <div className="space-y-2">
-                  <Label htmlFor="profileCity">City</Label>
+                  <Label htmlFor="companyCity">City</Label>
                   <Input
-                    id="profileCity"
+                    id="companyCity"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="City"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="profileState">State</Label>
+                  <Label htmlFor="companyState">State</Label>
                   <Input
-                    id="profileState"
+                    id="companyState"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     placeholder="State"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="profileCountry">Country</Label>
+                  <Label htmlFor="companyCountry">Country</Label>
                   <Input
-                    id="profileCountry"
+                    id="companyCountry"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     placeholder="Country"
                   />
                 </div>
-              </div>
-
-              <Separator />
-
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Office Location</Label>
-                  <p className="text-sm text-muted-foreground">
-                    Set the office location for location-based clock-in verification
-                  </p>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="profileLatitude">Latitude</Label>
-                    <Input
-                      id="profileLatitude"
-                      type="number"
-                      step="any"
-                      value={latitude ?? ""}
-                      onChange={(e) => setLatitude(e.target.value ? Number.parseFloat(e.target.value) : null)}
-                      placeholder="e.g., 6.5244"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="profileLongitude">Longitude</Label>
-                    <Input
-                      id="profileLongitude"
-                      type="number"
-                      step="any"
-                      value={longitude ?? ""}
-                      onChange={(e) => setLongitude(e.target.value ? Number.parseFloat(e.target.value) : null)}
-                      placeholder="e.g., 3.3792"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={getCurrentLocation}
-                    disabled={locationLoading}
-                    className="w-full sm:w-auto"
-                  >
-                    <Navigation className="mr-2 h-4 w-4" />
-                    {locationLoading ? "Getting Location..." : "Get Current Location"}
-                  </Button>
-                  {locationError && <p className="text-sm text-destructive">{locationError}</p>}
-                  {latitude && longitude && !locationError && (
-                    <p className="text-sm text-muted-foreground">
-                      Location set: {latitude.toFixed(6)}, {longitude.toFixed(6)}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="space-y-2">
-                <Label htmlFor="profileLogoUrl">Logo URL</Label>
-                <Input
-                  id="profileLogoUrl"
-                  type="url"
-                  value={logoUrl}
-                  onChange={(e) => setLogoUrl(e.target.value)}
-                  placeholder="https://example.com/logo.png"
-                />
-                <p className="text-xs text-muted-foreground">URL to your company logo image</p>
-                {logoUrl && (
-                  <div className="mt-2">
-                    <img
-                      src={logoUrl}
-                      alt="Company logo preview"
-                      className="h-20 w-20 object-contain rounded border"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none"
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="flex justify-end">
-            <Button onClick={handleSaveEmployerProfile} disabled={saved}>
-              {saved ? (
-                <>
-                  <CheckCircle className="mr-2 h-4 w-4" />
-                  Saved!
-                </>
-              ) : (
-                <>
-                  <Save className="mr-2 h-4 w-4" />
-                  Save Changes
-                </>
-              )}
-            </Button>
-          </div>
-        </TabsContent>
-
-        {/* Company Settings */}
-        <TabsContent value="company" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Building2 className="h-5 w-5" />
-                Company Information
-              </CardTitle>
-              <CardDescription>Manage your company details</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="companyName">Company Name</Label>
-                <Input
-                  id="companyName"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  placeholder="Your Company Name"
-                />
               </div>
 
               <div className="space-y-2">
@@ -743,6 +600,7 @@ export default function SettingsPage() {
 
               <Separator />
 
+              {/* Office location */}
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label>Office Location</Label>
@@ -798,6 +656,34 @@ export default function SettingsPage() {
 
               <Separator />
 
+              {/* Logo */}
+              <div className="space-y-2">
+                <Label htmlFor="companyLogoUrl">Logo URL</Label>
+                <Input
+                  id="companyLogoUrl"
+                  type="url"
+                  value={logoUrl}
+                  onChange={(e) => setLogoUrl(e.target.value)}
+                  placeholder="https://example.com/logo.png"
+                />
+                <p className="text-xs text-muted-foreground">URL to your company logo image</p>
+                {logoUrl && (
+                  <div className="mt-2">
+                    <img
+                      src={logoUrl}
+                      alt="Company logo preview"
+                      className="h-20 w-20 object-contain rounded border"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none"
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              <Separator />
+
+              {/* Account owner */}
               <div className="space-y-2">
                 <Label htmlFor="userName">Your Name</Label>
                 <Input
@@ -816,7 +702,7 @@ export default function SettingsPage() {
           </Card>
 
           <div className="flex justify-end">
-            <Button onClick={handleSaveProfile} disabled={saved}>
+            <Button onClick={handleSaveCompany} disabled={saved}>
               {saved ? (
                 <>
                   <CheckCircle className="mr-2 h-4 w-4" />

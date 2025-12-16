@@ -169,7 +169,7 @@ export default function LandingPage() {
 
           {/* Dashboard Preview */}
           <div className="relative mt-16 sm:mt-24">
-            <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-2xl" />
+            <div className="absolute -inset-4 rounded-2xl bg-linear-to-r from-primary/20 via-primary/10 to-primary/20 blur-2xl" />
             <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl">
               <div className="flex items-center gap-2 border-b border-border bg-muted/50 px-4 py-3">
                 <div className="h-3 w-3 rounded-full bg-red-500" />
