@@ -27,7 +27,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-          storageKey="attendease-theme"
+          storageKey="EasyAttendance-theme"
         >
           {children}
           <Toaster />

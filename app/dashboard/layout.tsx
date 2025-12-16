@@ -129,11 +129,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             key={item.name}
             href={item.href}
             onClick={() => mobile && setIsMobileMenuOpen(false)}
-            className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isActive
+            className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${isActive
                 ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
+              }`}
           >
             <item.icon className="h-5 w-5" />
             {item.name}
@@ -151,7 +150,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <Clock className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold text-foreground">AttendEase</span>
+          <span className="text-xl font-bold text-foreground">EasyAttendance</span>
         </div>
         <nav className="flex flex-col gap-1 p-4">
           <NavLinks />
@@ -164,7 +163,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <Clock className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold text-foreground">AttendEase</span>
+          <span className="text-xl font-bold text-foreground">EasyAttendance</span>
         </Link>
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger asChild>
@@ -178,7 +177,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <Clock className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-foreground">AttendEase</span>
+              <span className="text-xl font-bold text-foreground">EasyAttendance</span>
             </div>
             <nav className="flex flex-col gap-1 p-4">
               <NavLinks mobile />

@@ -113,7 +113,7 @@ export default function SignUpPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
               <Clock className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-2xl font-bold text-foreground">AttendEase</span>
+            <span className="text-2xl font-bold text-foreground">EasyAttendance</span>
           </Link>
           <CardTitle className="text-2xl">Create your account</CardTitle>
           <CardDescription>Start your 14-day free trial. No credit card required.</CardDescription>

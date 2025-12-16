@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: "Sarah Chen",
     role: "HR Director, TechFlow Inc.",
-    content: "AttendEase cut our payroll processing time by 60%. The QR verification alone saved us countless hours.",
+    content: "EasyAttendance cut our payroll processing time by 60%. The QR verification alone saved us countless hours.",
     avatar: "/professional-woman-diverse.png",
   },
   {
@@ -107,7 +107,7 @@ export default function LandingPage() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Clock className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">AttendEase</span>
+            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
           </Link>
           <div className="hidden items-center gap-8 md:flex">
             <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -178,7 +178,7 @@ export default function LandingPage() {
               </div>
               <img
                 src="/modern-dashboard-interface-with-attendance-charts-.jpg"
-                alt="AttendEase Dashboard Preview"
+                alt="EasyAttendance Dashboard Preview"
                 className="w-full"
               />
             </div>
@@ -221,7 +221,7 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Loved by HR teams everywhere
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">See what our customers have to say about AttendEase</p>
+            <p className="mt-4 text-lg text-muted-foreground">See what our customers have to say about EasyAttendance</p>
           </div>
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
@@ -262,9 +262,8 @@ export default function LandingPage() {
             {pricingPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative rounded-2xl border p-8 ${
-                  plan.highlighted ? "border-primary bg-card shadow-xl scale-105" : "border-border bg-card"
-                }`}
+                className={`relative rounded-2xl border p-8 ${plan.highlighted ? "border-primary bg-card shadow-xl scale-105" : "border-border bg-card"
+                  }`}
               >
                 {plan.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
@@ -304,7 +303,7 @@ export default function LandingPage() {
                 Ready to streamline your attendance?
               </h2>
               <p className="mt-4 text-lg text-primary-foreground/80">
-                Join thousands of companies already saving time and money with AttendEase.
+                Join thousands of companies already saving time and money with EasyAttendance.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button size="lg" variant="secondary" asChild>
@@ -328,7 +327,7 @@ export default function LandingPage() {
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                   <Clock className="h-5 w-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold text-foreground">AttendEase</span>
+                <span className="text-xl font-bold text-foreground">EasyAttendance</span>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">Modern attendance management for modern teams.</p>
             </div>
@@ -374,7 +373,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} AttendEase. All rights reserved.
+            &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
           </div>
         </div>
       </footer>

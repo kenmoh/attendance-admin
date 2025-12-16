@@ -12,7 +12,7 @@ export default function PrivacyPage() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Clock className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">AttendEase</span>
+            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
           </Link>
           <Button variant="ghost" asChild>
             <Link href="/">
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">1. Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
-              AttendEase ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains
+              EasyAttendance ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains
               how we collect, use, disclose, and safeguard your information when you use our attendance management
               platform.
             </p>
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-semibold text-foreground mb-4">9. Contact Us</h2>
             <p className="text-muted-foreground leading-relaxed">
               If you have questions about this Privacy Policy or our data practices, please contact us at
-              privacy@attendease.com.
+              privacy@EasyAttendance.com.
             </p>
           </section>
         </div>
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
       {/* Footer */}
       <footer className="border-t border-border bg-muted/30 py-8">
         <div className="mx-auto max-w-4xl px-4 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} AttendEase. All rights reserved.
+          &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
         </div>
       </footer>
     </div>

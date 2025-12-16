@@ -12,7 +12,7 @@ export default function TermsPage() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Clock className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">AttendEase</span>
+            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
           </Link>
           <Button variant="ghost" asChild>
             <Link href="/">
@@ -32,7 +32,7 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">1. Acceptance of Terms</h2>
             <p className="text-muted-foreground leading-relaxed">
-              By accessing or using AttendEase, you agree to be bound by these Terms of Service. If you do not agree to
+              By accessing or using EasyAttendance, you agree to be bound by these Terms of Service. If you do not agree to
               these terms, do not use our services.
             </p>
           </section>
@@ -40,14 +40,14 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">2. Description of Service</h2>
             <p className="text-muted-foreground leading-relaxed">
-              AttendEase provides cloud-based attendance management software including employee tracking, QR code
+              EasyAttendance provides cloud-based attendance management software including employee tracking, QR code
               verification, geofencing, reporting, and payroll integration features.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">3. Account Registration</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">To use AttendEase, you must:</p>
+            <p className="text-muted-foreground leading-relaxed mb-4">To use EasyAttendance, you must:</p>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
               <li>Provide accurate and complete registration information</li>
               <li>Maintain the security of your account credentials</li>
@@ -79,7 +79,7 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">6. Data Ownership</h2>
             <p className="text-muted-foreground leading-relaxed">
-              You retain ownership of all data you input into AttendEase. We have a license to use this data solely to
+              You retain ownership of all data you input into EasyAttendance. We have a license to use this data solely to
               provide our services to you. Upon termination, you may export your data within 30 days.
             </p>
           </section>
@@ -95,7 +95,7 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">8. Limitation of Liability</h2>
             <p className="text-muted-foreground leading-relaxed">
-              To the maximum extent permitted by law, AttendEase shall not be liable for any indirect, incidental,
+              To the maximum extent permitted by law, EasyAttendance shall not be liable for any indirect, incidental,
               special, consequential, or punitive damages arising from your use of the service.
             </p>
           </section>
@@ -119,7 +119,7 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-foreground mb-4">11. Contact</h2>
             <p className="text-muted-foreground leading-relaxed">
-              For questions about these Terms of Service, contact us at legal@attendease.com.
+              For questions about these Terms of Service, contact us at legal@EasyAttendance.com.
             </p>
           </section>
         </div>
@@ -128,7 +128,7 @@ export default function TermsPage() {
       {/* Footer */}
       <footer className="border-t border-border bg-muted/30 py-8">
         <div className="mx-auto max-w-4xl px-4 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} AttendEase. All rights reserved.
+          &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
         </div>
       </footer>
     </div>

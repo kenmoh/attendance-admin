@@ -183,6 +183,19 @@ export default function EmployeesPage() {
         return
       }
 
+      // create user profile for the new employee
+      const { error: profileError } = await supabase.from("user_profiles").insert({
+        user_id: authData.user.id,
+        role: "employee",
+        employer_id: employerId,
+        employee_id: employeeData.id,
+      })
+
+      if (profileError) {
+        console.error("[v0] Error creating employee profile:", profileError)
+        toast.error("Employee account created, but profile setup failed")
+      }
+
       toast.success(`Employee created successfully!`)
 
       await loadEmployees()

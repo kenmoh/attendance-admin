@@ -13,7 +13,7 @@ export default function AboutPage() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Clock className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">AttendEase</span>
+            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
           </Link>
           <div className="flex items-center gap-3">
             <ThemeToggle />
@@ -36,7 +36,7 @@ export default function AboutPage() {
               We're building the future of <span className="text-primary">workforce management</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
-              AttendEase was founded with a simple mission: make attendance tracking effortless, accurate, and fair for
+              EasyAttendance was founded with a simple mission: make attendance tracking effortless, accurate, and fair for
               businesses of all sizes.
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl text-center">Our Story</h2>
           <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              AttendEase was born from a frustration we all know too well. Our founders, former HR managers and software
+              EasyAttendance was born from a frustration we all know too well. Our founders, former HR managers and software
               engineers, witnessed countless hours wasted on manual attendance tracking, disputes over clock-in times,
               and payroll errors that damaged trust between employers and employees.
             </p>
@@ -149,7 +149,7 @@ export default function AboutPage() {
               punching. No more disputes. Just accurate, transparent attendance data.
             </p>
             <p>
-              Today, AttendEase serves businesses from small startups to Fortune 500 companies across 45 countries. Our
+              Today, EasyAttendance serves businesses from small startups to Fortune 500 companies across 45 countries. Our
               platform processes over 5 million clock-ins daily, helping companies save time, reduce costs, and build
               trust with their teams.
             </p>
@@ -190,10 +190,10 @@ export default function AboutPage() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <Clock className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-foreground">AttendEase</span>
+              <span className="text-xl font-bold text-foreground">EasyAttendance</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} AttendEase. All rights reserved.
+              &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
             </p>
           </div>
         </div>
