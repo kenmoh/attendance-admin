@@ -84,29 +84,71 @@ export default function QRCodesPage() {
     }
   }
 
-  const generateQRData = (employeeId?: string): string => {
-  const qrData = {
-    employer_id: employerId,      
-    company_name: companyName, 
-    latitude,
-    longitude,
-    timestamp: Date.now(),
-  }
+// const generateQRData = (employeeId?: string): string => {
+//   const qrData = {
+//     employer_id: employerId,
+//     company_name: companyName,
+//     latitude: latitude ?? 0,
+//     longitude: longitude ?? 0,
+//     timestamp: Date.now(),
+//   }
 
-  return JSON.stringify(qrData)
+//   const jsonString = JSON.stringify(qrData)
+  
+//   // ADD THESE LOGS
+//   console.log('=== ADMIN QR GENERATION ===')
+//   console.log('QR Data Object:', qrData)
+//   console.log('QR JSON String:', jsonString)
+//   console.log('QR String Length:', jsonString.length)
+//   console.log('===========================')
+
+//   return jsonString
+// }
+
+
+
+function generateChecksum(data: string): string {
+  let hash = 0;
+  for (let i = 0; i < data.length; i++) {
+    const char = data.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  return Math.abs(hash).toString(16).substring(0, 8);
 }
 
-  // const generateQRData = (employeeId?: string): string => {
-  //   const qrData: QRData = {
-  //     employerId,
-  //     companyName,
-  //     latitude,
-  //     longitude,
-  //     timestamp: Date.now(),
-  //   }
 
-  //   return JSON.stringify(qrData)
-  // }
+const generateQRData = (employeeId?: string): string => {
+  const timestamp = Date.now();
+  
+  // Create the data string for checksum (must match mobile app format EXACTLY)
+  const dataString = `${employerId}|${latitude ?? 0}|${longitude ?? 0}|${timestamp}|${companyName ?? ""}`;
+  
+  // Generate checksum
+  const checksum = generateChecksum(dataString);
+  
+  const qrData = {
+    employer_id: employerId,
+    company_name: companyName,
+    latitude: latitude ?? 0,
+    longitude: longitude ?? 0,
+    timestamp: timestamp,
+    checksum: checksum, 
+  }
+
+  const jsonString = JSON.stringify(qrData)
+  
+  console.log('=== ADMIN QR GENERATION ===')
+  console.log('Data string:', dataString)
+  console.log('Checksum:', checksum)
+  console.log('QR Data:', qrData)
+  console.log('JSON:', jsonString)
+  console.log('===========================')
+
+  return jsonString
+}
+
+
 
   const downloadQR = (qrData: string, filename: string) => {
     const svg = document.getElementById(filename)
@@ -185,14 +227,15 @@ export default function QRCodesPage() {
         <CardContent>
           <div className="flex flex-col md:flex-row gap-6">
             <div className="bg-white p-6 rounded-lg border-2 border-border w-fit">
-              <QRCode
-                id={`company-qr-${companyQRKey}`}
-                value={generateQRData()}
-                size={200}
-                level="H"
-                bgColor="#ffffff"
-                fgColor="#000000"
-              />
+            <QRCode
+          id={`company-qr-${companyQRKey}`}
+          value={generateQRData()}
+          size={256}  
+          level="M" 
+          bgColor="#ffffff"
+          fgColor="#000000"
+        />
+       
             </div>
             <div className="flex-1 space-y-4">
               <div>
@@ -268,11 +311,12 @@ export default function QRCodesPage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="bg-white p-3 rounded-lg border-2 border-border w-fit mx-auto">
+                 
                     <QRCode
                       id={`employee-qr-${employee.id}`}
                       value={generateQRData(employee.id)}
-                      size={150}
-                      level="H"
+                      size={180} 
+                      level="M"  
                       bgColor="#ffffff"
                       fgColor="#000000"
                     />
