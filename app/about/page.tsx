@@ -19,7 +19,7 @@ export default function AboutPage() {
                 alt="EasyAttendance Logo"
               />
             </div>
-            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
+            <span className="text-xl font-bold text-foreground">COPENG</span>
           </Link>
           <div className="flex items-center gap-3">
             <ThemeToggle />
@@ -42,7 +42,7 @@ export default function AboutPage() {
               We're building the future of <span className="text-primary">workforce management</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
-              EasyAttendance was founded with a simple mission: make attendance tracking effortless, accurate, and fair for
+              COPENG was founded with a simple mission: make attendance tracking effortless, accurate, and fair for
               businesses of all sizes.
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 sm:py-24 bg-muted/30">
+      {/*<section className="py-20 sm:py-24 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
@@ -137,7 +137,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Story Section */}
       <section className="py-20 sm:py-24">
@@ -145,7 +145,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl text-center">Our Story</h2>
           <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              EasyAttendance was born from a frustration we all know too well. Our founders, former HR managers and software
+              COPENG was born from a frustration we all know too well. Our founders, former HR managers and software
               engineers, witnessed countless hours wasted on manual attendance tracking, disputes over clock-in times,
               and payroll errors that damaged trust between employers and employees.
             </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
               punching. No more disputes. Just accurate, transparent attendance data.
             </p>
             <p>
-              Today, EasyAttendance serves businesses from small startups to Fortune 500 companies across 45 countries. Our
+              Today, COPENG serves businesses from small startups to Fortune 500 companies across 45 countries. Our
               platform processes over 5 million clock-ins daily, helping companies save time, reduce costs, and build
               trust with their teams.
             </p>
@@ -201,10 +201,10 @@ export default function AboutPage() {
                 alt="EasyAttendance Logo"
               />
               </div>
-              <span className="text-xl font-bold text-foreground">EasyAttendance</span>
+              <span className="text-xl font-bold text-foreground">COPENG</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
+              &copy; {new Date().getFullYear()} COPENG. All rights reserved.
             </p>
           </div>
         </div>

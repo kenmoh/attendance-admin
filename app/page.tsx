@@ -116,7 +116,7 @@ export default function LandingPage() {
               />
 
             </div>
-            <span className="text-xl font-bold text-foreground">EasyAttendance</span>
+            <span className="text-xl font-bold text-foreground">COPENG</span>
           </Link>
           <div className="hidden items-center gap-8 md:flex">
             <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -224,13 +224,13 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 sm:py-32">
+     {/* <section id="testimonials" className="py-20 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Loved by HR teams everywhere
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">See what our customers have to say about EasyAttendance</p>
+            <p className="mt-4 text-lg text-muted-foreground">See what our customers have to say about COPENG</p>
           </div>
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
@@ -256,7 +256,7 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Pricing Section */}
       <section id="pricing" className="py-20 sm:py-32 bg-muted/30">
@@ -387,7 +387,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} EasyAttendance. All rights reserved.
+            &copy; {new Date().getFullYear()} COPENG. All rights reserved.
           </div>
         </div>
       </footer>
