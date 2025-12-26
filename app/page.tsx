@@ -152,10 +152,10 @@ export default function LandingPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.1),transparent_50%)]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
+          {/*  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
               <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
               Trusted by 2,000+ companies worldwide
-            </div>
+            </div>*/}
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl text-balance">
               Attendance Management, <span className="text-primary">Simplified</span>
             </h1>
